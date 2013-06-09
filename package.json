@@ -1,0 +1,21 @@
+{
+  "name": "s3-lister",
+  "version": "0.0.1",
+  "description": "Stream the file descriptions from all keys in an s3 bucket",
+  "main": "lib/index.js",
+  "repository": "https://github.com/segmentio/s3-lister.git",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "readable-stream": "~1.0.2"
+  },
+  "peerDependencies": {
+    "knox": "~0.8.3"
+  },
+  "devDependencies": {
+    "knox": "~0.8.3",
+    "mocha": "*"
+  }
+}
