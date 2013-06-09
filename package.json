@@ -1,6 +1,6 @@
 {
   "name": "s3-lister",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stream the file descriptions from all keys in an s3 bucket",
   "main": "lib/index.js",
   "repository": "https://github.com/segmentio/s3-lister.git",
@@ -12,7 +12,7 @@
     "readable-stream": "~1.0.2"
   },
   "peerDependencies": {
-    "knox": "~0.8.3"
+    "knox": ">=0.5.0"
   },
   "devDependencies": {
     "knox": "~0.8.3",
