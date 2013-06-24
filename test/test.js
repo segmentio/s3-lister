@@ -11,7 +11,7 @@ var client = knox.createClient(auth);
 describe('S3Lister', function () {
 
   var files  = 10
-    , folder = '_s3-list_test';
+    , folder = '_s3-list-test';
 
   function fileOperation (fn, done) {
     var completed = 0;
