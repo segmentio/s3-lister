@@ -1,6 +1,5 @@
-
-S3-List
-=======
+S3-Lister
+=========
 
 A simple library to stream all the files which are the contents of an s3 folder.
 
