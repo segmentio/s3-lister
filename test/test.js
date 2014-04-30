@@ -1,5 +1,6 @@
 
 var assert   = require('assert')
+  , path     = require('path')
   , auth     = require('./auth.json')
   , knox     = require('knox')
   , S3Lister = require('../');
@@ -89,6 +90,23 @@ describe('S3Lister', function () {
       });
   });
 
+
+  it ('should list files with even numbered filenames', function (done) {
+    var filter = function (file) {
+      return +path.basename(file.Key, '.txt') % 2 === 0;
+    };
+
+    var stream    = new S3Lister(client, { prefix : folder, filter: filter })
+      , filesSeen = 0;
+
+    stream
+      .on('data',  function (file) { filesSeen += 1; })
+      .on('error', function (err)  { done(err); })
+      .on('end',   function ()     {
+        assert.equal(filesSeen, Math.ceil(files/2)); // ceil because of 0
+        done();
+      });
+  });
 
   after(function (done) {
     function remove(filename, cb) {
