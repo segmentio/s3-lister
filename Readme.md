@@ -31,12 +31,12 @@ lister
 
 In addition to the standard stream options, you can also pass in specific options:
 
-* start     - string to start with
-* prefix    - the prefix to list under
-* start     - s3 will return every key alphabetically after this string
-* delimiter - the character you use to group keys
-* maxKeys   - maximum amount of keys in a batch, (limited to 1000)
-
+* start      - string to start with
+* prefix     - the prefix to list under
+* start      - s3 will return every key alphabetically after this string
+* delimiter  - the character you use to group keys
+* maxResults - maximum amount of keys to list in total
+* maxKeys    - maximum amount of keys in a batch, (limited to 1000)
 
 ## License
 
