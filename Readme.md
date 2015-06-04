@@ -23,6 +23,19 @@ lister
   .on('end',   function ()     { console.log('Done!'); });
 ```
 
+Destroy stream early:
+
+```javascript
+var counter = 10;
+lister
+  .on('data',  function (data) {
+    if (--counter <= 0) lister.destroy();
+    console.log(data.Key);
+  })
+  .on('error', function (err)    { console.log('Error!', err); })
+  .on('close',   function ()     { console.log('stream closed!'); });
+```
+
 
 ### new S3Lister(s3, options)
 

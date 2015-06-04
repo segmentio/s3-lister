@@ -89,6 +89,24 @@ describe('S3Lister', function () {
       });
   });
 
+  it('should stop listing results after count', function (done) {
+    var stream = new S3Lister(client, {
+      prefix  : folder,
+    });
+
+    var count = 0;
+
+    stream
+      .on('data',  function (file) {
+        if (++count >= 2) { stream.destroy(); }
+      })
+      .on('error', function (err)  { done(err); })
+      .on('close',   function ()     {
+        assert.equal(count, 2);
+        done();
+      });
+  });
+
 
   after(function (done) {
     function remove(filename, cb) {
