@@ -50,6 +50,19 @@ describe('S3Lister', function () {
       });
   });
 
+  it ('should list n files when options.maxResults is set to n', function (done) {
+    var maxResults = 5
+      , stream    = new S3Lister(client, { maxResults : maxResults })
+      , filesSeen = 0;
+
+    stream
+      .on('data',  function (file) { filesSeen += 1; })
+      .on('error', function (err)  { done(err); })
+      .on('end',   function ()     {
+        assert.equal(maxResults, filesSeen);
+        done();
+      });
+  });
 
   it('should list all the files if maxKeys < number of files', function (done) {
     var stream = new S3Lister(client, {
